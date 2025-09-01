@@ -2,7 +2,7 @@ pipeline {
     agent any
 
  tools {
-        nodejs 'nodejs18'  // <-- Use the exact name from Global Tool Configuration
+        nodejs 'node18'  // <-- Use the exact name from Global Tool Configuration
     }
 
 
