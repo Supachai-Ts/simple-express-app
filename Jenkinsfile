@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        SONARQUBE = credentials('sonar-token') // ชื่อ Credential ของ Jenkins ที่เก็บ Token ของ SonarQube
+        SONARQUBE = credentials('Demo') // ชื่อ Credential ของ Jenkins ที่เก็บ Token ของ SonarQube
     }
 
     stages {
