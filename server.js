@@ -14,7 +14,3 @@ function hello(name) {
     return `Hello, ${name}!`
 }
 console.log(hello("Jenkins"));
-
-function unusedFunction() {
-    console.log("This function is never used");
-}
