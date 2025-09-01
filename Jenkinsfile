@@ -14,9 +14,9 @@ pipeline {
 
         stage('Scan') {
             steps {
-                withSonarQubeEnv('sq1') {
+                withSonarQubeEnv('Demo') {
                     sh 'npm install sonar-scanner'
-                    sh 'npx sonar-scanner -Dsonar.projectKey=mywebapp'
+                    sh 'npx sonar-scanner -Dsonar.projectKey=Demo'
                 }
             }
         }
