@@ -5,15 +5,15 @@ pipeline {
         stage('Build') {
             steps {
                 // git 'https://github.com/Supachai-Ts/simple-express-app.git'
-                bat "npm install"
+                sh "npm install"
             }
         }
 
         stage('Scan') {
             steps {
                 withSonarQubeEnv(installationName: 'sq1') {
-                    bat "npm install sonar-scanner"
-                    bat 'npx sonar-scanner -X -X -Dsonar.projectKey=mywebapp'
+                    sh "npm install sonar-scanner"
+                    sh 'npx sonar-scanner -X -X -Dsonar.projectKey=mywebapp'
                 }
             }
         }
