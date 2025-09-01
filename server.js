@@ -9,3 +9,12 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
+function hello(name) {
+    return `Hello, ${name}!`
+}
+console.log(hello("Jenkins"));
+
+function unusedFunction() {
+    console.log("This function is never used");
+}
