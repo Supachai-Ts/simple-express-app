@@ -1,22 +1,22 @@
 pipeline {
-    agent {
-        docker { image 'node:18' }
+    agent any
+    tools {
+        nodejs 'node18'   // ต้องตรงกับชื่อที่ config ใน Global Tool Configuration
     }
 
     stages {
         stage('Build') {
             steps {
-                // git 'https://github.com/Supachai-Ts/simple-express-app.git'
                 sh 'node -v'
-                sh "npm install"
+                sh 'npm install'
             }
         }
 
         stage('Scan') {
             steps {
-                withSonarQubeEnv(installationName: 'sq1') {
-                    sh "npm install sonar-scanner"
-                    sh 'npx sonar-scanner -X -X -Dsonar.projectKey=mywebapp'
+                withSonarQubeEnv('sq1') {
+                    sh 'npm install sonar-scanner'
+                    sh 'npx sonar-scanner -Dsonar.projectKey=mywebapp'
                 }
             }
         }
