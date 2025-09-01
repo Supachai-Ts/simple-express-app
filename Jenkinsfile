@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // git 'https://github.com/Supachai-Ts/simple-express-app.git'
+                git 'https://github.com/Supachai-Ts/simple-express-app.git'
                 sh "npm install"
             }
         }
