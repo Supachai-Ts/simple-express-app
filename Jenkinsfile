@@ -1,10 +1,9 @@
 pipeline {
     agent any
 
- tools {
-        nodejs 'node18'  // <-- Use the exact name from Global Tool Configuration
+    tools {
+        nodejs 'node18'  // ต้องตรงกับ Global Tool Configuration
     }
-
 
     stages {
         stage('Checkout') {
@@ -19,10 +18,21 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                // รัน Jest หรือ test framework ที่มี coverage
+                sh 'npm test -- --coverage || true'
+            }
+        }
+
         stage('SonarQube Scan') {
             steps {
                 withSonarQubeEnv('Demo') {
-                    sh 'npx sonar-scanner -Dsonar.projectKey=Demo'
+                    sh '''
+                      npx sonar-scanner \
+                        -Dsonar.projectKey=Demo \
+                        -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+                    '''
                 }
             }
         }
