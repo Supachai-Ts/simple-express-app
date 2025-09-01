@@ -1,10 +1,13 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:18' }
+    }
 
     stages {
         stage('Build') {
             steps {
                 // git 'https://github.com/Supachai-Ts/simple-express-app.git'
+                sh 'node -v'
                 sh "npm install"
             }
         }
